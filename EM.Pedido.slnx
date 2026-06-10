@@ -1,0 +1,21 @@
+<Solution>
+  <Folder Name="/00.Database/" />
+  <Folder Name="/01.DataAccess/">
+    <Project Path="EM.Pedido.DataAccess/EM.Pedido.DataAccess.csproj" />
+    <Project Path="EM.Pedido.Entities/EM.Pedido.Entities.csproj" />
+  </Folder>
+  <Folder Name="/02.Repositories/">
+    <Project Path="EM.Pedido.Repositories/EM.Pedido.Repositories.csproj" />
+  </Folder>
+  <Folder Name="/03.Business/">
+    <Project Path="EM.Pedido.Business/EM.Pedido.Business.csproj" />
+  </Folder>
+  <Folder Name="/04.Common/">
+    <Project Path="EM.Pedido.DTO/EM.Pedido.DTO.csproj" />
+    <Project Path="EM.Pedido.Utils/EM.Pedido.Utils.csproj" />
+  </Folder>
+  <Folder Name="/05.Presentation/">
+    <Project Path="EM.Pedido.UI/EM.Pedido.UI.csproj" />
+  </Folder>
+  <Folder Name="/Deploy/" />
+</Solution>
