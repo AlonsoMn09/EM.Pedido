@@ -1,10 +1,16 @@
+using EM.Pedido.DataAccess.Context;
 using EM.Pedido.UI.Components;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddDbContext<BdpedidosContext>(opt => {
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("BdPedidos"));
+});
 
 var app = builder.Build();
 

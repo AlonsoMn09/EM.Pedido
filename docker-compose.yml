@@ -1,0 +1,19 @@
+services:
+  sql_server_arq_capas:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sql_server_arq_capas
+    restart: always
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: Password2026
+      MSSQL_PID: Express
+    ports:
+      - 1402:1433
+    volumes:
+      - C:\Docker\Volumenes\layared_volumen:/var/opt/mssql/data
+    networks:
+      - layared_network
+
+networks:
+  layared_network:
+    driver: bridge

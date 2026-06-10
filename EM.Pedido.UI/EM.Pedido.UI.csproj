@@ -7,4 +7,8 @@
     <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EM.Pedido.DataAccess\EM.Pedido.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

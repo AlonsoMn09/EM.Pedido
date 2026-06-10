@@ -1,5 +1,10 @@
 <Solution>
-  <Folder Name="/00.Database/" />
+  <Folder Name="/00.Database/">
+    <Project Path="EM.Pedido.Database/EM.Pedido.Database.sqlproj" Id="c6435b86-132d-4282-9783-927151019516">
+      <Build />
+      <Deploy />
+    </Project>
+  </Folder>
   <Folder Name="/01.DataAccess/">
     <Project Path="EM.Pedido.DataAccess/EM.Pedido.DataAccess.csproj" />
     <Project Path="EM.Pedido.Entities/EM.Pedido.Entities.csproj" />
@@ -17,5 +22,7 @@
   <Folder Name="/05.Presentation/">
     <Project Path="EM.Pedido.UI/EM.Pedido.UI.csproj" />
   </Folder>
-  <Folder Name="/Deploy/" />
+  <Folder Name="/Deploy/">
+    <File Path="docker-compose.yml" />
+  </Folder>
 </Solution>

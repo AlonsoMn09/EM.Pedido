@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="172725b6-22b1-4973-a100-b42ca12156bc" ChangeDateTime="06/10/2026 02:01:26">
+    <Property Name="ElementName" Value="[sch_pedido].[cliente].[IdRubro]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[sch_pedido].[cliente]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdRubroMae" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a1f541f1-b9a3-4b85-ad80-f15159b4f01f" ChangeDateTime="06/10/2026 02:15:30">
+    <Property Name="ElementName" Value="[sch_configuracion].[FK_CatalogoDetalle_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[sch_configuracion].[CatalogoDetalle]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_CatalogoDetalle_ToCatalogo]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="64956a87-4907-4f1b-9635-b3946b40663d" ChangeDateTime="06/10/2026 02:17:14">
+    <Property Name="ElementName" Value="[sch_pedido].[cliente].[IdRubroMae]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[sch_pedido].[cliente]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdRubroCat" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="49038f80-1571-46dc-8a1a-cbdb42c6b84d" ChangeDateTime="06/10/2026 02:28:11">
+    <Property Name="ElementName" Value="[sch_pedido].[FK_Pedido_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[sch_pedido].[Pedido]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Pedido_ToCliente]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9d49816d-0293-468c-977d-34c8c0d195df" ChangeDateTime="06/10/2026 02:35:24">
+    <Property Name="ElementName" Value="[sch_pedido].[Cliente].[TipoDocumento]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[sch_pedido].[Cliente]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdTipoDocumento" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1bb1da75-6e4c-425c-b812-c4aed90bc622" ChangeDateTime="06/10/2026 02:35:34">
+    <Property Name="ElementName" Value="[sch_pedido].[Cliente].[IdTipoDocumento]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[sch_pedido].[Cliente]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdTipoDocumentoCat" />
+  </Operation>
+</Operations>
