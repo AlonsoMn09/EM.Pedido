@@ -1,4 +1,6 @@
 using EM.Pedido.DataAccess.Context;
+using EM.Pedido.Repositories.Implementations;
+using EM.Pedido.Repositories.Interfaces;
 using EM.Pedido.UI.Components;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +13,8 @@ builder.Services.AddRazorComponents()
 builder.Services.AddDbContext<BdpedidosContext>(opt => {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("BdPedidos"));
 });
+
+builder.Services.AddScoped<ICatalogoRepository, CatalogoRepository>();
 
 var app = builder.Build();
 

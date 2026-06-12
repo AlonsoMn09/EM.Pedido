@@ -3,10 +3,8 @@ using System.Collections.Generic;
 
 namespace EM.Pedido.Entities;
 
-public partial class Cliente
+public partial class Cliente : BaseEntity
 {
-    public int Id { get; set; }
-
     public string RazonSocial { get; set; } = null!;
 
     /// <summary>
@@ -25,16 +23,6 @@ public partial class Cliente
     public string Celular { get; set; } = null!;
 
     public int IdRubroCat { get; set; }
-
-    public bool Estado { get; set; }
-
-    public DateTime FechaCreacion { get; set; }
-
-    public string UsuarioCreacion { get; set; } = null!;
-
-    public DateTime? FechaModificacion { get; set; }
-
-    public string? UsuarioModificacion { get; set; }
 
     public virtual CatalogoDetalle IdRubroCatNavigation { get; set; } = null!;
 

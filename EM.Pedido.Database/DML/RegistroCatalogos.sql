@@ -22,55 +22,49 @@ Plantilla de script posterior a la implementación
 */
 
 
-DECLARE  @IdCatalogoMarcas INT = 0;
+DECLARE @IdCatalogoMarcas INT = NEXT VALUE FOR dbo.Seq_Catalogo;
 
-INSERT INTO Sch_Configuracion.Catalogo (Codigo, Nombre, Descripcion)
-VALUES ('MAE_MARCAS', 'MARCAS', 'CATALOGO DE MARCAS DE LOS PRODUCTOS')
-
-SET @IdCatalogoMarcas = (SELECT @@IDENTITY)
+INSERT INTO Sch_Configuracion.Catalogo (Id, Codigo, Nombre, Descripcion)
+VALUES (@IdCatalogoMarcas, 'MAE_MARCAS', 'MARCAS', 'CATALOGO DE MARCAS DE LOS PRODUCTOS');
 
 INSERT INTO Sch_Configuracion.CatalogoDetalle (IdCatalogo, Codigo, Valor)
 VALUES
     (@IdCatalogoMarcas, 'M_PRIMOR', 'PRIMOR'),
     (@IdCatalogoMarcas, 'M_GLORIA', 'GLORIA'),
     (@IdCatalogoMarcas, 'M_MOLITALIA', 'MOLITALIA'),
-    (@IdCatalogoMarcas, 'M_CIELO', 'CIELO')
+    (@IdCatalogoMarcas, 'M_CIELO', 'CIELO');
 
 
-DECLARE @IdCatalogoCategorias INT = 0;
+DECLARE @IdCatalogoCategorias INT = NEXT VALUE FOR dbo.Seq_Catalogo;
 
-INSERT INTO Sch_Configuracion.Catalogo (Codigo, Nombre, Descripcion)
-VALUES ('MAE_CATEGORIAS', 'CATEGORIAS', 'CATALOGO DE CATEGORIAS DE LOS PRODUCTOS')
-
-SET @IdCatalogoCategorias = (SELECT @@IDENTITY)
+INSERT INTO Sch_Configuracion.Catalogo (Id, Codigo, Nombre, Descripcion)
+VALUES (@IdCatalogoCategorias, 'MAE_CATEGORIAS', 'CATEGORIAS', 'CATALOGO DE CATEGORIAS DE LOS PRODUCTOS');
 
 INSERT INTO Sch_Configuracion.CatalogoDetalle (IdCatalogo, Codigo, Valor)
 VALUES
     (@IdCatalogoCategorias, 'C_LIMPIEZA', 'LIMPIEZA'),
     (@IdCatalogoCategorias, 'C_ALIMENTOS', 'ALIMENTOS'),
     (@IdCatalogoCategorias, 'C_ASEO', 'ASEO PERSONAL'),
-    (@IdCatalogoCategorias, 'C_BEBIDAS', 'GASEOSAS')
+    (@IdCatalogoCategorias, 'C_BEBIDAS', 'GASEOSAS');
 
 
-DECLARE @IdCatalogoRubros INT = 0;
+DECLARE @IdCatalogoRubros INT = NEXT VALUE FOR dbo.Seq_Catalogo;
 
-INSERT INTO Sch_Configuracion.Catalogo (Codigo, Nombre, Descripcion)
-VALUES ('MAE_RUBROS', 'RUBROS', 'CATALOGO DE RUBROS DE LOS CLIENTE')
-
-SET @IdCatalogoRubros = (SELECT @@IDENTITY)
+INSERT INTO Sch_Configuracion.Catalogo (Id, Codigo, Nombre, Descripcion)
+VALUES (@IdCatalogoRubros, 'MAE_RUBROS', 'RUBROS', 'CATALOGO DE RUBROS DE LOS CLIENTE');
 
 INSERT INTO Sch_Configuracion.CatalogoDetalle (IdCatalogo, Codigo, Valor)
 VALUES
     (@IdCatalogoRubros, 'R_GIMNASIO', 'GIMNASIO'),
     (@IdCatalogoRubros, 'R_BODEGA', 'BODEGA'),
     (@IdCatalogoRubros, 'R_FARMACIA', 'FARMACIA'),
-    (@IdCatalogoRubros, 'R_KIOSKO', 'KIOSKO')
+    (@IdCatalogoRubros, 'R_KIOSKO', 'KIOSKO');
 
-DECLARE @ID_ESTADO_PEDIDO INT
-INSERT INTO Sch_Configuracion.Catalogo (Codigo, Nombre, Descripcion, FechaCreacion, UsuarioCreacion)
-VALUES ('MAE_ESTPDD','ESTADO PEDIDO','ESTADOS DEL PEDIDO', GETDATE(), 'Admin')
 
-SET @ID_ESTADO_PEDIDO = (SELECT @@IDENTITY)
+DECLARE @ID_ESTADO_PEDIDO INT = NEXT VALUE FOR dbo.Seq_Catalogo;
+
+INSERT INTO Sch_Configuracion.Catalogo (Id, Codigo, Nombre, Descripcion, FechaCreacion, UsuarioCreacion)
+VALUES (@ID_ESTADO_PEDIDO, 'MAE_ESTPDD','ESTADO PEDIDO','ESTADOS DEL PEDIDO', GETDATE(), 'Admin');
 
 INSERT INTO Sch_Configuracion.CatalogoDetalle (Codigo, IdCatalogo, Valor, FechaCreacion, UsuarioCreacion)
 VALUES
@@ -80,4 +74,4 @@ VALUES
     ('PDD_CAMINO',@ID_ESTADO_PEDIDO, 'EN CAMINO', GETDATE() , 'Admin'),
     ('PDD_ENTREGADO',@ID_ESTADO_PEDIDO, 'ENTREGADO', GETDATE() , 'Admin'),
     ('PDD_CANCELADO',@ID_ESTADO_PEDIDO, 'CANCELADO', GETDATE() , 'Admin'),
-    ('PDD_RETRASADO',@ID_ESTADO_PEDIDO, 'RETRASADO', GETDATE() , 'Admin')
+    ('PDD_RETRASADO',@ID_ESTADO_PEDIDO, 'RETRASADO', GETDATE() , 'Admin');

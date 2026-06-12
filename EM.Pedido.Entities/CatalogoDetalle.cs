@@ -3,25 +3,13 @@ using System.Collections.Generic;
 
 namespace EM.Pedido.Entities;
 
-public partial class CatalogoDetalle
+public partial class CatalogoDetalle : BaseEntity
 {
-    public int Id { get; set; }
-
     public int IdCatalogo { get; set; }
 
     public string Codigo { get; set; } = null!;
 
-    public string? Valor { get; set; }
-
-    public bool Estado { get; set; }
-
-    public DateTime FechaCreacion { get; set; }
-
-    public string UsuarioCreacion { get; set; } = null!;
-
-    public DateTime? FechaModificacion { get; set; }
-
-    public string? UsuarioModificacion { get; set; }
+    public string? Valor { get; set; }    
 
     public virtual ICollection<Cliente> ClienteIdRubroCatNavigations { get; set; } = new List<Cliente>();
 

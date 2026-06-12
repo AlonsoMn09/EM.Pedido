@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EM.Pedido.DataAccess\EM.Pedido.DataAccess.csproj" />
+    <ProjectReference Include="..\EM.Pedido.DTO\EM.Pedido.DTO.csproj" />
+    <ProjectReference Include="..\EM.Pedido.Repositories\EM.Pedido.Repositories.csproj" />
   </ItemGroup>
 
 </Project>
