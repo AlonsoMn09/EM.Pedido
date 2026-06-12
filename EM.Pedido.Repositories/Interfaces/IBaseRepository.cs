@@ -13,7 +13,7 @@ namespace EM.Pedido.Repositories.Interfaces
         Task UpdateAsync();
         Task<TEntity?> GetByAsync(int id);
         Task<ICollection<TEntity>> ListAsync();
-        Task<(ICollection<TResult>, int TotalRows)> ListAsync<TResult, TKey>
+        Task<(ICollection<TResult> Result, int TotalRows)> ListAsync<TResult, TKey>
             (
                 Expression<Func<TEntity, bool>> predicate,
                 Expression<Func<TEntity, TResult>> selector,

@@ -1,3 +1,5 @@
+using EM.Pedido.Business.Implementations;
+using EM.Pedido.Business.Interfaces;
 using EM.Pedido.DataAccess.Context;
 using EM.Pedido.Repositories.Implementations;
 using EM.Pedido.Repositories.Interfaces;
@@ -13,8 +15,14 @@ builder.Services.AddRazorComponents()
 builder.Services.AddDbContext<BdpedidosContext>(opt => {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("BdPedidos"));
 });
-
+/*
+    SCOPED: Se crea una nueva instancia cada vez que se solicita el servicio. Esto es útil para servicios que mantienen estado por solicitud, como los repositorios.
+    TRANSIENT: Se crea una nueva instancia cada vez que se solicita el servicio. Esto es útil para servicios ligeros y sin estado, como los servicios de negocio.
+    SINGLETON: Se crea una única instancia para toda la aplicación. Esto es útil para servicios que mantienen estado global o que son costosos de crear, como los servicios de configuración.
+ */
 builder.Services.AddScoped<ICatalogoRepository, CatalogoRepository>();
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IClienteService, ClienteService>();
 
 var app = builder.Build();
 

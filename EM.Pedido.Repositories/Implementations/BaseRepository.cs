@@ -44,7 +44,7 @@ namespace EM.Pedido.Repositories.Implementations
                 .ToListAsync();
         }
 
-        public async Task<(ICollection<TResult>, int TotalRows)> ListAsync<TResult, TKey>
+        public async Task<(ICollection<TResult> Result, int TotalRows)> ListAsync<TResult, TKey>
             (
                 Expression<Func<TEntity, bool>> predicate,
                 Expression<Func<TEntity, TResult>> selector,
