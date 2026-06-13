@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ANM.Blazored.Toast" Version="0.1.1" />
+    <PackageReference Include="Blazor.Bootstrap" Version="3.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EM.Pedido.Business\EM.Pedido.Business.csproj" />
     <ProjectReference Include="..\EM.Pedido.DataAccess\EM.Pedido.DataAccess.csproj" />
     <ProjectReference Include="..\EM.Pedido.DTO\EM.Pedido.DTO.csproj" />

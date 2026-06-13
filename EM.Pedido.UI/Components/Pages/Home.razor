@@ -1,5 +1,5 @@
-﻿@inject BdpedidosContext _context
-@using EM.Pedido.DataAccess.Context
+﻿@* @inject BdpedidosContext _context
+@using EM.Pedido.DataAccess.Context *@
 @page "/"
 
 <PageTitle>Home</PageTitle>
@@ -16,12 +16,12 @@ Welcome to your new app.
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in _context.Catalogos)
+      @*   @foreach (var item in _context.Catalogos)
         {
             <tr>
                 <td>@item.Id</td>
                 <td>@item.Nombre</td>
             </tr>
-        }
+        } *@
     </tbody>
 </table>

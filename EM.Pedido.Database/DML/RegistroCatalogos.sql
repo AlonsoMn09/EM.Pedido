@@ -75,3 +75,14 @@ VALUES
     ('PDD_ENTREGADO',@ID_ESTADO_PEDIDO, 'ENTREGADO', GETDATE() , 'Admin'),
     ('PDD_CANCELADO',@ID_ESTADO_PEDIDO, 'CANCELADO', GETDATE() , 'Admin'),
     ('PDD_RETRASADO',@ID_ESTADO_PEDIDO, 'RETRASADO', GETDATE() , 'Admin');
+
+DECLARE @ID_TIPO_DOC INT = NEXT VALUE FOR dbo.Seq_Catalogo;
+
+INSERT INTO Sch_Configuracion.Catalogo (Id, Codigo, Nombre, Descripcion)
+VALUES (@ID_TIPO_DOC, 'MAE_TIPO_DOC','TIPO DOCUMENTOS','CATALOGO DE TIPO DE DOCUMENTOS DE IDENTIDAD');
+
+INSERT INTO Sch_Configuracion.CatalogoDetalle (IdCatalogo, Codigo, Valor)
+VALUES
+    (@ID_TIPO_DOC, 'TD_DNI', 'DNI'),
+    (@ID_TIPO_DOC, 'TD_RUC', 'RUC'),
+    (@ID_TIPO_DOC, 'TD_CEX', 'CE');

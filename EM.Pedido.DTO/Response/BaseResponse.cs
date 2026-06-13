@@ -6,7 +6,7 @@ namespace EM.Pedido.DTO.Response
 {
     public class BaseResponse
     {
-        public string? Mesagge { get; set; }
+        public string? Messagge { get; set; }
         public string? ErrorCode { get; set; }
         public bool IsSucess { get; set; }
     }

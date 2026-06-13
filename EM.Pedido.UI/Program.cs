@@ -1,3 +1,4 @@
+using Blazored.Toast;
 using EM.Pedido.Business.Implementations;
 using EM.Pedido.Business.Interfaces;
 using EM.Pedido.DataAccess.Context;
@@ -23,6 +24,9 @@ builder.Services.AddDbContext<BdpedidosContext>(opt => {
 builder.Services.AddScoped<ICatalogoRepository, CatalogoRepository>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
+
+builder.Services.AddBlazorBootstrap();
+builder.Services.AddBlazoredToast();
 
 var app = builder.Build();
 
