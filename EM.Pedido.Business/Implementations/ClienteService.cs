@@ -46,8 +46,8 @@ namespace EM.Pedido.Business.Implementations
             catch (Exception ex)
             {
                 response.IsSucess = false;
-                response.Messagge = "Ocurrió un error al agregar cliente.";
-                _logger.LogError(ex, "{0} - {1}", response.Messagge, ex.Message);
+                response.Message = "Ocurrió un error al agregar cliente.";
+                _logger.LogError(ex, "{0} - {1}", response.Message, ex.Message);
             }
             return response;
         }
@@ -62,7 +62,7 @@ namespace EM.Pedido.Business.Implementations
                 {
                     response.IsSucess = true;
                     response.ErrorCode = "CLIENTE_NOT_FOUND";
-                    response.Messagge = "Cliente no encontrado.";
+                    response.Message = "Cliente no encontrado.";
                     return response;
                 }
                 request.Adapt(cliente);
@@ -72,8 +72,8 @@ namespace EM.Pedido.Business.Implementations
             catch (Exception ex)
             {
                 response.IsSucess = false;
-                response.Messagge = "Ocurrió un error al actualizar cliente.";
-                _logger.LogError(ex, "{0} - {1}", response.Messagge, ex.Message);
+                response.Message = "Ocurrió un error al actualizar cliente.";
+                _logger.LogError(ex, "{0} - {1}", response.Message, ex.Message);
             }
             return response;
         }
@@ -88,7 +88,7 @@ namespace EM.Pedido.Business.Implementations
                 {
                     response.IsSucess = true;
                     response.ErrorCode = "CLIENTE_NOT_FOUND";
-                    response.Messagge = "Cliente no encontrado.";
+                    response.Message = "Cliente no encontrado.";
                     return response;
                 }
                 response.Result = cliente.Adapt<GetClienteResponse>();
@@ -97,8 +97,8 @@ namespace EM.Pedido.Business.Implementations
             catch (Exception ex)
             {
                 response.IsSucess = false;
-                response.Messagge = "Ocurrió un error al obtener cliente.";
-                _logger.LogError(ex, "{0} - {1}", response.Messagge, ex.Message);
+                response.Message = "Ocurrió un error al obtener cliente.";
+                _logger.LogError(ex, "{0} - {1}", response.Message, ex.Message);
             }
             return response;
         }
@@ -137,8 +137,8 @@ namespace EM.Pedido.Business.Implementations
             catch (Exception ex)
             {
                 response.IsSucess = false;
-                response.Messagge = "Ocurrió un error al listar clientes.";
-                _logger.LogError(ex, "{0} - {1}", response.Messagge, ex.Message);
+                response.Message = "Ocurrió un error al listar clientes.";
+                _logger.LogError(ex, "{0} - {1}", response.Message, ex.Message);
             }
             return response;
         }
@@ -153,7 +153,7 @@ namespace EM.Pedido.Business.Implementations
                 {
                     response.IsSucess = true;
                     response.ErrorCode = "CLIENTE_NOT_FOUND";
-                    response.Messagge = "Cliente no encontrado.";
+                    response.Message = "Cliente no encontrado.";
                     return response;
                 }              
                 await _repository.DeleteAsync(id);
@@ -162,8 +162,8 @@ namespace EM.Pedido.Business.Implementations
             catch (Exception ex)
             {
                 response.IsSucess = false;
-                response.Messagge = "Ocurrió un error al eliminar cliente.";
-                _logger.LogError(ex, "{0} - {1}", response.Messagge, ex.Message);
+                response.Message = "Ocurrió un error al eliminar cliente.";
+                _logger.LogError(ex, "{0} - {1}", response.Message, ex.Message);
             }
             return response;
         }

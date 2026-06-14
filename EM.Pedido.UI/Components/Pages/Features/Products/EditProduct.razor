@@ -1,0 +1,25 @@
+﻿@using EM.Pedido.UI.Components.Pages.Features.Products.Components
+@attribute [Route(ComponentRoutes.Products.EditNav)]
+
+<GroupBox Class="mb-4">
+    <Content>
+        <div class="page-header">
+            <h2 class="page-title">Editar Producto</h2>
+            <span class="page-route">@ComponentRoutes.Products.Edit</span>
+        </div>
+    </Content>
+</GroupBox>
+
+<GroupBox Titulo="Datos del Producto">
+    <Content>
+        <FormProduct 
+            ListMarcas="ListMarcas" 
+            ListCategorias="ListCategorias" 
+            OnSaveEvent="SaveProduct" 
+            Request="Request" />
+    </Content>
+</GroupBox>
+
+@code {
+ 
+}

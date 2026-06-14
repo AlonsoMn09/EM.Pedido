@@ -1,4 +1,5 @@
 using Blazored.Toast;
+using CurrieTechnologies.Razor.SweetAlert2;
 using EM.Pedido.Business.Implementations;
 using EM.Pedido.Business.Interfaces;
 using EM.Pedido.DataAccess.Context;
@@ -24,10 +25,13 @@ builder.Services.AddDbContext<BdpedidosContext>(opt => {
 builder.Services.AddScoped<ICatalogoDetalleRepository, CatalogoDetalleRepository>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
+builder.Services.AddScoped<IProductoService, ProductoService>();
 builder.Services.AddScoped<ICatalogoService, CatalogoService>();
 
 builder.Services.AddBlazorBootstrap();
 builder.Services.AddBlazoredToast();
+builder.Services.AddSweetAlert2();
 
 var app = builder.Build();
 

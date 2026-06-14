@@ -2,12 +2,20 @@
 {
     public static class ComponentRoutes
     {
-        public static class Clientes
+        public static class Clients
         {
             public const string List = "/maintenance/clients";
             public const string Create = "/maintenance/clients/create";
             public const string Edit = "/maintenance/clients/edit";
             public const string EditNav = "/maintenance/clients/edit/{id:int}";
+        }
+
+        public static class Products
+        {
+            public const string List = "/maintenance/products";
+            public const string Create = "/maintenance/product/create";
+            public const string Edit = "/maintenance/product/edit";
+            public const string EditNav = "/maintenance/product/edit/{id:int}";
         }
     }
 }

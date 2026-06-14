@@ -46,8 +46,8 @@ namespace EM.Pedido.Business.Implementations
             catch (Exception ex)
             {
                 response.IsSucess = false;
-                response.Messagge = "Ocurrió un error al agregar Producto.";
-                _logger.LogError(ex, "{0} - {1}", response.Messagge, ex.Message);
+                response.Message = "Ocurrió un error al agregar Producto.";
+                _logger.LogError(ex, "{0} - {1}", response.Message, ex.Message);
             }
             return response;
         }
@@ -62,7 +62,7 @@ namespace EM.Pedido.Business.Implementations
                 {
                     response.IsSucess = true;
                     response.ErrorCode = "Producto_NOT_FOUND";
-                    response.Messagge = "Producto no encontrado.";
+                    response.Message = "Producto no encontrado.";
                     return response;
                 }
                 request.Adapt(Producto);
@@ -72,8 +72,8 @@ namespace EM.Pedido.Business.Implementations
             catch (Exception ex)
             {
                 response.IsSucess = false;
-                response.Messagge = "Ocurrió un error al actualizar Producto.";
-                _logger.LogError(ex, "{0} - {1}", response.Messagge, ex.Message);
+                response.Message = "Ocurrió un error al actualizar Producto.";
+                _logger.LogError(ex, "{0} - {1}", response.Message, ex.Message);
             }
             return response;
         }
@@ -88,7 +88,7 @@ namespace EM.Pedido.Business.Implementations
                 {
                     response.IsSucess = true;
                     response.ErrorCode = "Producto_NOT_FOUND";
-                    response.Messagge = "Producto no encontrado.";
+                    response.Message = "Producto no encontrado.";
                     return response;
                 }
                 response.Result = Producto.Adapt<GetProductoResponse>();
@@ -97,8 +97,8 @@ namespace EM.Pedido.Business.Implementations
             catch (Exception ex)
             {
                 response.IsSucess = false;
-                response.Messagge = "Ocurrió un error al obtener Producto.";
-                _logger.LogError(ex, "{0} - {1}", response.Messagge, ex.Message);
+                response.Message = "Ocurrió un error al obtener Producto.";
+                _logger.LogError(ex, "{0} - {1}", response.Message, ex.Message);
             }
             return response;
         }
@@ -135,8 +135,8 @@ namespace EM.Pedido.Business.Implementations
             catch (Exception ex)
             {
                 response.IsSucess = false;
-                response.Messagge = "Ocurrió un error al listar Productos.";
-                _logger.LogError(ex, "{0} - {1}", response.Messagge, ex.Message);
+                response.Message = "Ocurrió un error al listar Productos.";
+                _logger.LogError(ex, "{0} - {1}", response.Message, ex.Message);
             }
             return response;
         }
@@ -151,7 +151,7 @@ namespace EM.Pedido.Business.Implementations
                 {
                     response.IsSucess = true;
                     response.ErrorCode = "Producto_NOT_FOUND";
-                    response.Messagge = "Producto no encontrado.";
+                    response.Message = "Producto no encontrado.";
                     return response;
                 }              
                 await _repository.DeleteAsync(id);
@@ -160,8 +160,8 @@ namespace EM.Pedido.Business.Implementations
             catch (Exception ex)
             {
                 response.IsSucess = false;
-                response.Messagge = "Ocurrió un error al eliminar Producto.";
-                _logger.LogError(ex, "{0} - {1}", response.Messagge, ex.Message);
+                response.Message = "Ocurrió un error al eliminar Producto.";
+                _logger.LogError(ex, "{0} - {1}", response.Message, ex.Message);
             }
             return response;
         }

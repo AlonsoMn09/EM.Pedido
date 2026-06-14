@@ -1,0 +1,124 @@
+﻿@using EM.Pedido.DTO.Request.Producto
+@using EM.Pedido.DTO.Response.Catalogo
+<EditForm Model="Request" FormName="ProductForm" OnValidSubmit="OnSave">
+    <DataAnnotationsValidator />
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+            <label>Nombre</label>
+            <input class="form-control form-control-sm" @bind="Request.Nombre" />
+            <ValidationMessage For="@(() => Request.Nombre)" />
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+            <label>Descripción</label>
+            <textarea class="form-control form-control-sm" @bind="Request.Descripcion" />
+            <ValidationMessage For="@(() => Request.Descripcion)" />
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+            <label>Marca</label>  
+            <select class="form-select form-select-sm" @bind="Request.IdMarcaCat">
+                @* @bind="MarcaSeleccionada" *@
+                @* @onchange="SetColors" *@                
+                <option value="0">Seleccionar</option>
+                @foreach (var item in ListMarcas)
+                {
+                    <option value="@item.Id">@item.Valor</option>
+                }
+            </select>
+            <ValidationMessage For="@(() => Request.IdMarcaCat)" />
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+            <label>Colores</label>
+            <select class="form-select form-select-sm">
+                <option value="0">Seleccionar</option>
+                @foreach (var item in ListaColores)
+                {
+                    <option>@item</option>
+                }
+            </select>            
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+            <label>Categoría</label>
+            <select class="form-select form-select-sm" @bind="Request.IdCategoriaCat">
+                <option value="0">Seleccionar</option>
+                @foreach (var item in ListCategorias)
+                {
+                    <option value="@item.Id">@item.Valor</option>
+                }
+            </select>
+            <ValidationMessage For="@(() => Request.IdCategoriaCat)" />
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+            <label>Precio</label>
+            <InputNumber class="form-control form-control-sm" @bind-Value="Request.PrecioUnitario" />
+            <ValidationMessage For="@(() => Request.PrecioUnitario)" />
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+            <label>Stock</label>
+            <InputNumber class="form-control form-control-sm" @bind-Value="Request.Stock" />
+            <ValidationMessage For="@(() => Request.Stock)" />
+        </div>
+    </div>
+    
+    <div class="row gx-4 mt-4">
+        <div class="col">
+            <button class="btn btn-primary" type="submit"><i class="bi bi-save"></i>Guardar</button>
+            <a class="btn btn-danger" href="@ComponentRoutes.Products.List">Cancelar</a>
+        </div>
+    </div>
+</EditForm>
+@code {
+    [Parameter]
+    public CreateProductoRequest Request { get; set; } = new();
+    [Parameter]
+    public List<ListCatalogoByCodigoResponse> ListMarcas { get; set; } = new();
+    [Parameter]
+    public List<ListCatalogoByCodigoResponse> ListCategorias { get; set; } = new();
+
+    [Parameter]
+    public EventCallback OnSaveEvent { get; set; } = default!;
+
+    public async Task OnSave()
+    {
+        await OnSaveEvent.InvokeAsync();        
+    }
+
+    private int MarcaSeleccionada;
+
+    public List<(string, string)> ListColors = new()
+    {
+        ("1", "azul"),
+        ("1", "rojo"),
+        ("2", "verde"),
+        ("2", "amarillo")    
+    };
+
+    //public List<string> ListaColores { get; set; } = new();
+
+    public IEnumerable<string> ListaColores => ListColors.Where(x => x.Item1 == Request.IdMarcaCat.ToString()).Select(x => x.Item2);
+
+    // private async Task SetColors(ChangeEventArgs e)
+    // {
+    //     // if (Request.IdMarcaCat == 1)
+    //     // {
+    //     //     ListaColores.AddRange(ListColors.Where(x => x.Item1 == "1").Select(x => x.Item1));
+    //     // }
+    //     // else
+    //     // {
+    //     //     ListaColores.AddRange(ListColors.Where(x => x.Item1 == "2").Select(x => x.Item1));
+    //     // }
+    //     ListaColores = new();
+    //     if (int.TryParse(e.Value.ToString(), out int MarcaID))
+    //     {
+    //         if (MarcaID == 1)
+    //         {
+    //             ListaColores.AddRange(ListColors.Where(x => x.Item1 == "1").Select(x => x.Item2));
+    //         }
+    //         else
+    //         {
+    //             ListaColores.AddRange(ListColors.Where(x => x.Item1 == "2").Select(x => x.Item2));
+    //         }
+    //     }        
+    // }
+}

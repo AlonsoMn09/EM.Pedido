@@ -43,8 +43,8 @@ namespace EM.Pedido.Business.Implementations
             catch (Exception ex)
             {
                 response.IsSucess = false;
-                response.Messagge = "Ocurrió un error al listar catalogos.";
-                _logger.LogError(ex, "{0} - {1}", response.Messagge, ex.Message);
+                response.Message = "Ocurrió un error al listar catalogos.";
+                _logger.LogError(ex, "{0} - {1}", response.Message, ex.Message);
             }
             return response;
         }
