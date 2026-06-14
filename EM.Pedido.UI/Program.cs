@@ -21,9 +21,10 @@ builder.Services.AddDbContext<BdpedidosContext>(opt => {
     TRANSIENT: Se crea una nueva instancia cada vez que se solicita el servicio. Esto es útil para servicios ligeros y sin estado, como los servicios de negocio.
     SINGLETON: Se crea una única instancia para toda la aplicación. Esto es útil para servicios que mantienen estado global o que son costosos de crear, como los servicios de configuración.
  */
-builder.Services.AddScoped<ICatalogoRepository, CatalogoRepository>();
+builder.Services.AddScoped<ICatalogoDetalleRepository, CatalogoDetalleRepository>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<ICatalogoService, CatalogoService>();
 
 builder.Services.AddBlazorBootstrap();
 builder.Services.AddBlazoredToast();

@@ -19,6 +19,9 @@ namespace EM.Pedido.UI.Components.Pages.Maintenance.Clients
 
         public ICollection<ListClienteResponse> Response { get; set; } = new List<ListClienteResponse>();
 
+        [Inject]
+        public NavigationManager Navigation { get; set; } = default!;
+
         protected override async Task OnInitializedAsync()
         {
             await ListClients();
@@ -42,5 +45,8 @@ namespace EM.Pedido.UI.Components.Pages.Maintenance.Clients
                 Toast.ShowError($"Hubo un error desconocido: {ex.Message}");
             }
         }
+
+        private async Task ToEdit(int id) =>
+            Navigation.NavigateTo($"{Common.ComponentRoutes.Clientes.Edit}/{id}");
     }
 }

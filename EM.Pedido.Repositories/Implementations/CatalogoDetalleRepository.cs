@@ -7,7 +7,7 @@ using System.Text;
 
 namespace EM.Pedido.Repositories.Implementations
 {
-    public class CatalogoRepository(BdpedidosContext context) : BaseRepository<Catalogo>(context), ICatalogoRepository
+    public class CatalogoDetalleRepository(BdpedidosContext context) : BaseRepository<CatalogoDetalle>(context), ICatalogoDetalleRepository
     {
         /*private readonly BdpedidosContext _context;
         public CatalogoRepository(BdpedidosContext context) : base(context)

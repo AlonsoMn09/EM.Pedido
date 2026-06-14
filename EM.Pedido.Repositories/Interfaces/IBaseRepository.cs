@@ -21,5 +21,11 @@ namespace EM.Pedido.Repositories.Interfaces
                 int page = 1, int pageSize = 10
             );
         Task DeleteAsync(int id);
+        Task<ICollection<TResult>> ListAsync<TResult, TKey>
+            (
+                Expression<Func<TEntity, bool>> predicate,
+                Expression<Func<TEntity, TResult>> selector,
+                Expression<Func<TEntity, TKey>> orderBy
+            );
     }
 }

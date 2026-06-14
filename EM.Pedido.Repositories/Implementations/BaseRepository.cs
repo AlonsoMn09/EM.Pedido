@@ -68,6 +68,21 @@ namespace EM.Pedido.Repositories.Implementations
             return (result, total);
         }
 
+        public async Task<ICollection<TResult>> ListAsync<TResult, TKey>
+            (
+                Expression<Func<TEntity, bool>> predicate,
+                Expression<Func<TEntity, TResult>> selector,
+                Expression<Func<TEntity, TKey>> orderBy
+            )
+        {
+            return await _context.Set<TEntity>()
+                .Where(predicate)
+                .AsNoTracking()
+                .OrderBy(orderBy)
+                .Select(selector)
+                .ToListAsync();
+        }
+
         public async Task DeleteAsync(int id) 
         { 
             await _context.Set<TEntity>()

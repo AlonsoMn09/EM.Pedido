@@ -8,11 +8,11 @@ namespace EM.Pedido.Entities
     {
         public int Id { get; set; }
 
-        public bool Estado { get; set; }
+        public bool Estado { get; set; } = true;
 
-        public DateTime FechaCreacion { get; set; }
+        public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
-        public string UsuarioCreacion { get; set; } = null!;
+        public string UsuarioCreacion { get; set; } = Environment.UserName;
 
         public DateTime? FechaModificacion { get; set; }
 

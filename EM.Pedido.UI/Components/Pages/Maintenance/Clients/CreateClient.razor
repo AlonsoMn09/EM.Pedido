@@ -1,0 +1,21 @@
+﻿@using EM.Pedido.UI.Components.Pages.Maintenance.Clients.Components
+@attribute [Route(ComponentRoutes.Clientes.Create)]
+
+<GroupBox Class="mb-4">
+    <Content>
+        <div class="page-header">
+            <h2 class="page-title">Registrar Cliente</h2>
+            <span class="page-route">@ComponentRoutes.Clientes.Create</span>
+        </div>
+    </Content>
+</GroupBox>
+
+<GroupBox Titulo="Datos del Cliente">
+    <Content>
+        <FormClient 
+            ListTipoDoc="ListTipoDoc" 
+            ListRubros="ListRubros" 
+            OnSaveEvent="SaveClient" 
+            Request="Request" />
+    </Content>
+</GroupBox>

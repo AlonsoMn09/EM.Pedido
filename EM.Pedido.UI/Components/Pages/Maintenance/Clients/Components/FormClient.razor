@@ -1,0 +1,85 @@
+﻿@using EM.Pedido.DTO.Request.Cliente
+@using EM.Pedido.DTO.Response.Catalogo
+<EditForm Model="Request" FormName="ClientForm" OnValidSubmit="OnSave">
+    <DataAnnotationsValidator />
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+            <label>Razón Social</label>
+            <input class="form-control form-control-sm" @bind="Request.RazonSocial" />
+            <ValidationMessage For="@(() => Request.RazonSocial)" />
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+            <label>Tipo Documento</label>  
+            <select class="form-select form-select-sm" @bind="Request.IdTipoDocumentoCat">
+                <option value="0">Seleccionar</option>
+                @foreach (var item in ListTipoDoc)
+                {
+                    <option value="@item.Id">@item.Valor</option>
+                }
+            </select>
+            <ValidationMessage For="@(() => Request.IdTipoDocumentoCat)" />
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+            <label>Número Documento</label>
+            <input class="form-control form-control-sm" @bind="Request.NumeroDocumento" />
+            <ValidationMessage For="@(() => Request.NumeroDocumento)" />
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-2">
+            <label>Representante</label>
+            <input class="form-control form-control-sm" @bind="Request.Representante" />
+            <ValidationMessage For="@(() => Request.Representante)" />
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-2">
+            <label>Dirección</label>
+            <input class="form-control form-control-sm" @bind="Request.Direccion" />
+            <ValidationMessage For="@(() => Request.Direccion)" />
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+            <label>Email</label>
+            <input class="form-control form-control-sm" type="email" @bind="Request.Email" />
+            <ValidationMessage For="@(() => Request.Email)" />
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+            <label>Celular</label>
+            <input class="form-control form-control-sm" @bind="Request.Celular" />
+            <ValidationMessage For="@(() => Request.Celular)" />
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+            <label>Rubro</label>
+            <select class="form-select form-select-sm" @bind="Request.IdRubroCat">
+                <option value="0">Seleccionar</option>
+                @foreach (var item in ListRubros)
+                {
+                    <option value="@item.Id">@item.Valor</option>
+                }
+            </select>
+            <ValidationMessage For="@(() => Request.IdRubroCat)" />
+        </div>
+    </div>
+    
+    <div class="row gx-4 mt-4">
+        <div class="col">
+            <button class="btn btn-primary" type="submit"><i class="bi bi-save"></i>Guardar</button>
+            <a class="btn btn-danger" href="@ComponentRoutes.Clientes.List">Cancelar</a>
+        </div>
+    </div>
+</EditForm>
+@code {
+    [Parameter]
+    public CreateClienteRequest Request { get; set; } = new();
+    [Parameter]
+    public List<ListCatalogoByCodigoResponse> ListRubros { get; set; } = new();
+    [Parameter]
+    public List<ListCatalogoByCodigoResponse> ListTipoDoc { get; set; } = new();
+
+    [Parameter]
+    public EventCallback OnSaveEvent { get; set; } = default!;
+
+    public async Task OnSave()
+    {
+        await OnSaveEvent.InvokeAsync();        
+    }
+}

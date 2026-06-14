@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EM.Pedido.Repositories.Interfaces
 {
-    public interface ICatalogoRepository : IBaseRepository<Catalogo>
+    public interface ICatalogoDetalleRepository : IBaseRepository<CatalogoDetalle>
     {
     }
 }
