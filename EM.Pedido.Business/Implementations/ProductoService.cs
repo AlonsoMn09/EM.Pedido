@@ -6,6 +6,7 @@ using EM.Pedido.DTO.Response;
 using EM.Pedido.DTO.Response.Producto;
 using EM.Pedido.Entities;
 using EM.Pedido.Repositories.Interfaces;
+using EM.Pedido.Utils;
 using Mapster;
 using Microsoft.Extensions.Logging;
 
@@ -129,8 +130,8 @@ namespace EM.Pedido.Business.Implementations
                 );
                 response.IsSucess = true;
                 response.Result = result.Result;
-                response.TotalRowsPerPages = result.Result.Count;
-                response.TotalPages = (int)Math.Ceiling((double)result.TotalRows / request.Rows);
+                response.TotalRowsPerPages = result.TotalRows;
+                response.TotalPages = Helpers.CalculatePageCount(result.TotalRows, request.Rows); //(int)Math.Ceiling((double)result.TotalRows / request.Rows);
             }
             catch (Exception ex)
             {

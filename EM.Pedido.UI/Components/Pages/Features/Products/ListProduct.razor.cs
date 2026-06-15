@@ -33,6 +33,8 @@ namespace EM.Pedido.UI.Components.Pages.Features.Products
         [Inject]
         public NavigationManager Navigation { get; set; } = default!;
 
+        private PagerRequest Pager { get; set; } = new();
+
         protected override async Task OnInitializedAsync()
         {
             await ListProducts();
@@ -54,6 +56,13 @@ namespace EM.Pedido.UI.Components.Pages.Features.Products
                 if (result!.IsSucess)
                 {
                     Response = result.Result;
+                    Pager = new PagerRequest
+                    {
+                        CurrentPage = Request.Page,
+                        TotalPages = result.TotalPages,
+                        TotalRows = result.TotalRowsPerPages,
+                        RowsPerPage = Request.Rows
+                    };
                 }
                 else
                 {
@@ -71,6 +80,13 @@ namespace EM.Pedido.UI.Components.Pages.Features.Products
                 //Loading.IsLoading = false;
                 IsLoading = false;
             }
+        }
+
+        private async Task OnPager()
+        {
+            Request.Page = Pager.CurrentPage;
+            Request.Rows = Pager.RowsPerPage;
+            await ListProducts();
         }
 
         private async Task Delete(ListProductoResponse item) {

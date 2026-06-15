@@ -33,6 +33,8 @@ namespace EM.Pedido.UI.Components.Pages.Features.Clients
         [Inject]
         public NavigationManager Navigation { get; set; } = default!;
 
+        private PagerRequest Pager { get; set; } = new();
+
         protected override async Task OnInitializedAsync()
         {
             await ListClients();
@@ -54,6 +56,13 @@ namespace EM.Pedido.UI.Components.Pages.Features.Clients
                 if (result!.IsSucess)
                 {
                     Response = result.Result;
+                    Pager = new PagerRequest
+                    {
+                        CurrentPage = Request.Page,
+                        TotalPages = result.TotalPages,
+                        TotalRows = result.TotalRowsPerPages,
+                        RowsPerPage = Request.Rows
+                    };
                 }
                 else
                 {
@@ -71,6 +80,13 @@ namespace EM.Pedido.UI.Components.Pages.Features.Clients
                 //Loading.IsLoading = false;
                 IsLoading = false;
             }
+        }
+
+        private async Task OnPager()
+        {
+            Request.Page = Pager.CurrentPage;
+            Request.Rows = Pager.RowsPerPage;
+            await ListClients();
         }
 
         private async Task Delete(ListClienteResponse item) {
