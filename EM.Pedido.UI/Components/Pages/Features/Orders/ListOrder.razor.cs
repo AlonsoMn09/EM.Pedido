@@ -4,6 +4,7 @@ using EM.Pedido.Business.Interfaces;
 using EM.Pedido.DTO.Request;
 using EM.Pedido.DTO.Response.Pedido;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace EM.Pedido.UI.Components.Pages.Features.Orders
 {
@@ -28,6 +29,9 @@ namespace EM.Pedido.UI.Components.Pages.Features.Orders
         public ICollection<ListPedidoResponse> Response { get; set; } = new List<ListPedidoResponse>();
 
         private PagerRequest Pager { get; set; } = new();
+
+        [Inject]
+        private IJSRuntime _js { get; set; } = default!;
 
         protected override async Task OnInitializedAsync()
         {
@@ -64,7 +68,6 @@ namespace EM.Pedido.UI.Components.Pages.Features.Orders
             }
             catch (Exception ex)
             {
-
                 Toast.Notify(new(ToastType.Danger, ex.Message!));
             }
             finally
@@ -78,6 +81,22 @@ namespace EM.Pedido.UI.Components.Pages.Features.Orders
             Request.Page = Pager.CurrentPage;
             Request.Rows = Pager.RowsPerPage;
             await ListPedidos();
+        }
+
+        private async Task ExportExcel() 
+        {
+            IsLoading = true;
+            try
+            {
+                var result = await _service.ExportListAsync(Request);
+                var content = result.Result;
+                await _js.InvokeVoidAsync("descargarArchivo", "Pedido.xlsx", content.ToArray());
+            }
+            catch (Exception ex)
+            {
+                Toast.Notify(new(ToastType.Danger, ex.Message!));
+            }
+            finally { IsLoading = false; }            
         }
     }
 }

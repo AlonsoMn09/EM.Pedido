@@ -5,6 +5,7 @@ using EM.Pedido.DTO.Response.Catalogo;
 using EM.Pedido.UI.Common;
 using Microsoft.AspNetCore.Components;
 using BlazorBootstrap;
+using EM.Pedido.Utils;
 
 namespace EM.Pedido.UI.Components.Pages.Features.Products
 {

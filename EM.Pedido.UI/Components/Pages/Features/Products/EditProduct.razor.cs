@@ -4,6 +4,7 @@ using EM.Pedido.Business.Interfaces;
 using EM.Pedido.DTO.Request.Producto;
 using EM.Pedido.DTO.Response.Catalogo;
 using EM.Pedido.UI.Common;
+using EM.Pedido.Utils;
 using Mapster;
 using Microsoft.AspNetCore.Components;
 

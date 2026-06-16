@@ -19,11 +19,16 @@ namespace EM.Pedido.Business.Implementations
     {
         private readonly IPedidoRepository _pedidoRepository;
         private readonly ILogger<PedidoService> _logger;
+        private readonly IExcelService _excel;
 
-        public PedidoService(IPedidoRepository pedidoRepository, ILogger<PedidoService> logger)
+        public PedidoService(
+            IPedidoRepository pedidoRepository
+            , ILogger<PedidoService> logger
+            , IExcelService excel)
         {
             _pedidoRepository = pedidoRepository;
             _logger = logger;
+            _excel = excel;
         }
 
         public async Task<BaseResponse> AddAsync(CreatePedidoRequest request)
@@ -96,6 +101,46 @@ namespace EM.Pedido.Business.Implementations
             catch (Exception ex)
             {
                 response.Message = "Error al listar pedido.";
+                _logger.LogError(ex, "{0} - {1}", response.Message, ex.Message);
+            }
+            return response;
+        }
+
+        public async Task<BaseResponse<MemoryStream>> ExportListAsync(SearchListRequest request)
+        {
+            var response = new BaseResponse<MemoryStream>();
+            try
+            {
+                var result = await _pedidoRepository.ListAsync(
+                    predicate: p => p.Estado &&
+                        (
+                            (string.IsNullOrEmpty(request.Filter) || p.IdClienteNavigation.RazonSocial.Contains(request.Filter)) ||
+                            (string.IsNullOrEmpty(request.Filter) || p.IdClienteNavigation.NumeroDocumento.Contains(request.Filter))
+                        ),
+                    selector: p => new ListPedidoResponse
+                    {
+                        Id = p.Id,
+                        IdCliente = p.IdCliente,
+                        RazonSocial = p.IdClienteNavigation.RazonSocial,
+                        NumeroDocumento = p.IdClienteNavigation.NumeroDocumento,
+                        TotalBruto = p.TotalBruto,
+                        TotalNeto = p.TotalNeto,
+                        Total = p.TotalBruto - p.Adelanto,
+                        Adelanto = p.Adelanto,
+                        CantidadProductos = p.PedidoDetalles.Count,
+                        FechaRegistro = p.FechaCreacion
+                    },
+                    orderBy: p => p.FechaCreacion,
+                    page: request.Page,
+                    pageSize: Constants.MaxExportRows
+                );
+
+                response.IsSucess = true;
+                response.Result = _excel.ExportExcel(result.Result, "Pedidos");
+            }
+            catch (Exception ex)
+            {
+                response.Message = "Error al exportar los pedidos.";
                 _logger.LogError(ex, "{0} - {1}", response.Message, ex.Message);
             }
             return response;
