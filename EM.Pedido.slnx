@@ -24,5 +24,6 @@
   </Folder>
   <Folder Name="/Deploy/">
     <File Path="docker-compose.yml" />
+    <File Path="dockerfile" />
   </Folder>
 </Solution>

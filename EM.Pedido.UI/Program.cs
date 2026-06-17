@@ -8,6 +8,7 @@ using EM.Pedido.Repositories.Interfaces;
 using EM.Pedido.UI.Components;
 using Microsoft.EntityFrameworkCore;
 using Scrutor;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +39,16 @@ builder.Services.Scan(scan =>
         .WithScopedLifetime()
 );
 
+builder.Host.UseSerilog((context, services, configuration) =>
+{
+    configuration
+        .ReadFrom.Configuration(context.Configuration)
+        .Enrich.FromLogContext()
+        .Enrich.WithProperty("Application", "EM.Pedido")
+        .Enrich.WithProperty("Enviroment", context.HostingEnvironment.EnvironmentName)
+        .WriteTo.Console()
+        .WriteTo.Seq(context.Configuration["Seq:ServerUrl"]!);
+});
 
 builder.Services.AddBlazorBootstrap();
 builder.Services.AddBlazoredToast();

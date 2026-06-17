@@ -41,6 +41,7 @@ namespace EM.Pedido.Business.Implementations
                 await _pedidoRepository.CreateAsync(order);
                 response.IsSucess = true;
                 response.Message = "Pedido creado exitosamente.";
+                _logger.LogInformation($"El pedido fue registrado exitosamente: {request.NombreCliente}");
             }
             catch (Exception ex)
             {

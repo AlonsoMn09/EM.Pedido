@@ -12,6 +12,6 @@ namespace EM.Pedido.Business.Interfaces
     {
         Task<BaseResponse> AddAsync(CreatePedidoRequest request);
         Task<PagedResponse<ListPedidoResponse>> ListAsync(SearchListRequest request);
-        Task<BaseResponse<MemoryStream>> ExportListAsync(SearchListRequest request)
+        Task<BaseResponse<MemoryStream>> ExportListAsync(SearchListRequest request);
     }
 }
